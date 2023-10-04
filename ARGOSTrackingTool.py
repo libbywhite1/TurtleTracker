@@ -8,6 +8,10 @@
 # Author: John Fay (john.fay@duke.edu)
 # Date:   Fall 2023
 #--------------------------------------------------------------
+
+#Ask user for a date
+user_date = '7/3/2023' #input("Enter a date: ")
+
 #Create a variable pointing to the data file
 file_name = './data/raw/sara.txt'
 
@@ -19,7 +23,6 @@ line_list = file_object.readlines() #now we have a list of lines
 
 #Close the file
 file_object.close()
-
 
 #Initialize dictonaries
 date_dict = {}
@@ -47,7 +50,13 @@ for lineString in line_list:
         #add items to dictionaries
         date_dict[record_id] = obs_date
         location_dict[record_id] =(obs_lat, obs_lon)
+    
+    #initialize key list
+    keys = []
 
-    #Print the location of sara
-    #print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
-
+    #loop through items in date_dict (value is date) (iterate through items, pulling out into seperate values )
+for item in date_dict.items():
+    key = item[0]
+    value = item[1]
+    if value == user_date: 
+        print(key)
